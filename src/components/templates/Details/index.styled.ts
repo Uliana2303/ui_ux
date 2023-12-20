@@ -94,14 +94,7 @@ export const Data = styled.div`
     }
 `;
 
-export const BackgroundImage = styled.img`
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
-    opacity: 0.3;
-`;
+
 
 export const Image = styled.div`
     display: flex;

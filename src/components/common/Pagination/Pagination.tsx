@@ -12,16 +12,16 @@ type PaginationProps = {
 };
 const Pagination: React.FC<PaginationProps> = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-  let portionSize = 5;
+  let portionSize = 10;
 
-  if (useWindowSize()[0] > 900) {
-    portionSize = 10;
-  } else {
-    portionSize = 5;
-  }
-  if (useWindowSize()[0] < 300) {
-    portionSize = 3;
-  }
+  // if (useWindowSize()[0] > 900) {
+  //   portionSize = 10;
+  // } else {
+  //   portionSize = 5;
+  // }
+  // if (useWindowSize()[0] < 300) {
+  //   portionSize = 3;
+  // }
 
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {

@@ -6,11 +6,11 @@ export const darkTheme = {
   infoIconColor: "#2D2F34",
   iconColor: "#B600FF",
   accentColor1: "#8f0651",
-  accentColor2: "#8f0651",
+  accentColor2: "#e681b8",
   shadowColor: "rgba(0,0,0,0.2)",
 
   textSizeTitle: "25px",
-  textSizeTitle900: "22px",
+  textSizeTitle900: "50px",
   textSizeTitle700: "22px",
   textSizeTitle500: "22px",
 
@@ -38,11 +38,11 @@ export const lightTheme = {
   infoIconColor: "#FAFAFA",
   iconColor: "#D57AFA",
   accentColor1: "#8f0651",
-  accentColor2: "#8f0651",
+  accentColor2: "#e681b8",
   shadowColor: "rgba(0,0,0,0.2)",
 
   textSizeTitle: "25px",
-  textSizeTitle900: "22px",
+  textSizeTitle900: "50px",
   textSizeTitle700: "22px",
   textSizeTitle500: "22px",
 

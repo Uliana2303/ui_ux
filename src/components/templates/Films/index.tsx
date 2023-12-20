@@ -5,14 +5,16 @@ import Pagination from "../../common/Pagination/Pagination";
 import Film from "./Film/Film";
 import Loader from "@/components/common/Loader";
 import * as Style from "./index.styled";
+import { useRouter } from "next/router";
 
 const Films = () => {
+  const router = useRouter();
   // Начинаем с первой страницы фильмов
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(router.query.currentPage);
   // Кол-во фильмов на странице
   // const pageSize = 5;
   // const [pageSize, setPageSize] = useState(5);
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(10);
   const { filmList, isLoading } = useFilmList(String(page), String(pageSize));
   const [loading, setLoading] = useState(false);
   const size = useWindowSize();
@@ -21,17 +23,17 @@ const Films = () => {
   
 
   // Меняю кол-во фильмов на экране по мере его масштабирования в большую или меньшую стороны
-  useEffect(() => {
-    if (windowWidth == 1920) {
-      setPageSize(15);
-    } 
-    else if (windowWidth > 1920){
-      setPageSize(30);
-    }
-    else if (windowWidth < 1920){
-      setPageSize(5);
-    }
-  }, [windowWidth, windowHeight]);
+  // useEffect(() => {
+  //   if (windowWidth == 1920) {
+  //     setPageSize(15);
+  //   } 
+  //   else if (windowWidth > 1920){
+  //     setPageSize(30);
+  //   }
+  //   else if (windowWidth < 1920){
+  //     setPageSize(5);
+  //   }
+  // }, [windowWidth, windowHeight]);
 
   let prevVal = page;
 
@@ -55,13 +57,17 @@ const Films = () => {
       <Style.Content>
         <Style.Title>Films</Style.Title>
           <Style.List>{filmsList}</Style.List>
-           <Pagination
+           
+      </Style.Content>
+      <Pagination
             totalUsersCount={filmList?.data?.movie_count}
             currentPage={page}
             pageSize={pageSize}
-            onPageChange={(page) => setPage(page)}
+            onPageChange={(page) => {
+              setPage(page);
+              router.push(`/${page}`);
+            }}
           />
-      </Style.Content>
     </Style.Films>
   ) : null;
   

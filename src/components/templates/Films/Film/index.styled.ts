@@ -27,6 +27,25 @@ export const Rating = styled.div`
     justify-content: center;
     flex-direction: column;
 `;
+
+export const RatingCircle = styled.div`
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background-color: ${props=> props.theme.accentColor2};
+    height: 40px;
+    width: 40px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    align-self: center;
+    align-content: center;
+    opacity: 0;
+    transition: all 0.3sec;
+`;
+
 export const RatingIcon = styled.div`
     display: flex;
     flex: 0 0 auto;
@@ -41,45 +60,65 @@ export const RatingText = styled.div`
     display: flex;
     flex: 0 0 auto;
     width: 100%;
+    font-weight: 200;
     align-items: center;
     justify-content: center;
     font-size: ${props=> props.theme.textSizeL};
 `;
 
 export const Genres = styled.div`
-    width: 100%;
-    height: 50%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    gap: 10px;
 `;
 
 export const GenresText = styled.div`
-    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     font-weight: 200;
-    font-size: ${props=> props.theme.textSizeL};
+    font-size: 30px;
+    margin-top: 10px;
+    @media (max-width: 1920px) and (min-width: 768px)  {
+        font-size: 30px;
+    }
+    @media (max-width: 768px) and (min-width: 576px)  {
+        font-size: 15px;
+    }
+    @media (max-width: 576px)  {
+        font-size: 15px;
+    }
 `;
 
 export const Details = styled.button`
     cursor: pointer;
     border: 0;
-    width: 70px;
-    margin: 10px 0px;
-    height: 40px;
+    width: 150px;
+    margin: 10px;
+    height: 60px;
     flex: 0 0 auto;
     border-radius: 10px;
     background-color:  ${props => props.theme.accentColor1};
     color: white;
   
-    font-size: ${props=> props.theme.textSizeL};
+    font-size: 30px;
     font-weight: 600;
-    &:hover{
-        background-color: #D57AFA;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    @media (max-width: 1920px) and (min-width: 768px)  {
+        font-size: 30px;
+        width: 150px;
+        height: 60px;
+    }
+    @media (max-width: 768px) and (min-width: 576px)  {
+        font-size: 15px;
+        width: 70px;
+        height: 40px;
+    }
+    @media (max-width: 576px)  {
+        font-size: 15px;
+        width: 70px;
+        height: 40px;
     }
 `;
 
@@ -87,11 +126,11 @@ export const Film = styled.div`
     cursor: pointer;
     display: flex;  
     flex-direction:column ;
-    background-color: ${props => props.theme.iconColor};
     width: 100%;
+    min-width: 400px;
     box-shadow: 0px 0px 5px ${props => props.theme.shadowColor};
-    border-radius:10px;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
     transition: all 0.3s ease;
     &:hover{
         box-shadow: 0px 0px 5px ${props => props.theme.accentColor1};
@@ -101,6 +140,10 @@ export const Film = styled.div`
             opacity: 1;
             pointer-events: all;
         }
+        & ${RatingCircle} {
+            transition: all 0.3sec;
+            opacity: 1;
+        }
     }
 `;
 
@@ -108,8 +151,11 @@ export const Content = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
-    // overflow: hidden;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    border-radius:10px;
+    background-color: ${props => props.theme.iconColor};
 `;
 
 export const Cards = styled.div`
@@ -121,44 +167,36 @@ export const Cards = styled.div`
     // overflow: hidden;
 `;
 
-export const Card1 = styled.img` 
+export const Pic = styled.img` 
     aspect-ratio: 1/1/5;
-    display: flex;
-    flex: 0 0 auto;
-    width: 100px;
-    height: 110px;
+    height: 100%;
     object-fit: cover;
     box-sizing: border-box;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 `;
 
 export const Name = styled.div`
     flex: 0 0 auto;
     flex-wrap: nowrap;
     // width: 100%;
-    font-size: 30px;
     letter-spacing: 1px;
     // overflow: hidden;
     margin: 0px 0px 0px 0px;
     // padding: 0px 150px;
     box-sizing: border-box;
     text-overflow: ellipsis;   
-    white-space: nowrap;
-    @media (max-width: 992px) and (min-width: 768px)  {
-        font-size: ${props => props.theme.textSizeTextM900};
+    // white-space: nowrap;
+    @media (max-width: 1920px) and (min-width: 768px)  {
+        font-size: ${props => props.theme.textSizeTitle900};
     }
     @media (max-width: 768px) and (min-width: 576px)  {
-        font-size: ${props => props.theme.textSizeTextM700};
+        font-size: 25px;
     }
     @media (max-width: 576px)  {
-        font-size: ${props => props.theme.textSizeTextM500};
+        font-size: 25px;
     }
 `;
 
 export const Text = styled.div`
-    margin: 10px 0px 10px 0px;
-    padding: 0px 10px;
     display:flex;
     flex: 0 0 auto;
     // overflow: hidden;
@@ -166,7 +204,15 @@ export const Text = styled.div`
     word-break: break-all;
     width: 100%;
     font-weight: 600;
-    font-size: ${props => props.theme.textSizeTextS};
+    margin-bottom: 10px;
+    margin-top: auto;
+    font-size:20px;
+`;
+
+export const TextArea = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
 `;
 
 

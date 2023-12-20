@@ -9,62 +9,40 @@ const Film: React.FC<MovieList> = (props) => {
     <Style.Film>
       <Link href={`/films/${props.id}`}>
         <Style.Content>
-          <Style.Cards>
-
-            <Style.Card2>
-            <Style.Card1
-              src={
-                props.medium_cover_image
-                  ? props.medium_cover_image
-                  : "https://klike.net/uploads/posts/2019-05/1556708032_1.jpg"
-              }
-              alt={props.medium_cover_image}
-            ></Style.Card1>
-              <Style.Rating>
-                <Style.RatingIcon>
-                  <VscStarFull />
-                </Style.RatingIcon>
-                <Style.RatingText> {props.rating} / 10</Style.RatingText>
-              </Style.Rating>
-
-              {props.genres ? (
-                <Style.Genres>
-                  {0 in props.genres ? (
-                    <Style.GenresText>
-                      {props.genres[0].toUpperCase()}
-                    </Style.GenresText>
-                  ) : (
-                    ""
-                  )}
-                  {1 in props.genres ? (
-                    <Style.GenresText>
-                      {props.genres[1].toUpperCase()}
-                    </Style.GenresText>
-                  ) : (
-                    ""
-                  )}
-                  {2 in props.genres ? (
-                    <Style.GenresText>
-                      {props.genres[2].toUpperCase()}
-                    </Style.GenresText>
-                  ) : (
-                    ""
-                  )}
-                </Style.Genres>
+          <Style.Pic src={props.medium_cover_image} />
+          <Style.TextArea>
+            <Style.Name>{props.title}</Style.Name>
+            <Style.Genres>
+              {0 in props.genres ? (
+                <Style.GenresText>
+                  {props.genres[0]}
+                </Style.GenresText>
               ) : (
                 ""
               )}
-
-              <Style.Details>DETAILS</Style.Details>
-            </Style.Card2>
-          </Style.Cards>
-
-          <Style.Name>{props.title}</Style.Name>
-
-          <Style.Text>
-            {props.year} {props.language}
-          </Style.Text>
+              {1 in props.genres ? (
+                <Style.GenresText>
+                  {props.genres[1]}
+                </Style.GenresText>
+              ) : (
+                ""
+              )}
+              {2 in props.genres ? (
+                <Style.GenresText>
+                  {props.genres[2]}
+                </Style.GenresText>
+              ) : (
+                ""
+              )}
+            </Style.Genres>
+            <Style.Text>{props.language} {props.year}</Style.Text>
+          </Style.TextArea>
         </Style.Content>
+        <Style.Details>Details</Style.Details>
+        <Style.RatingCircle><Style.RatingText>
+            {props.rating}
+          </Style.RatingText>
+        </Style.RatingCircle>
       </Link>
     </Style.Film>
   );

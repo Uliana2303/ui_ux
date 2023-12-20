@@ -129,9 +129,6 @@ const Details = () => {
 
   return (
     <Style.Details>
-      <Style.BackgroundImage
-        src={filmRetrieve?.data.movie.background_image_original}
-      ></Style.BackgroundImage>
       <Style.Content>
         <Style.ContentTitle>
           <Link href={"/"}>Films / {filmRetrieve?.data.movie.title}</Link>
@@ -164,7 +161,7 @@ const Details = () => {
             <Style.Genres>{genresList}</Style.Genres>
 
             <Style.DescriptionFull>
-              {filmRetrieve?.data.movie.description_full}
+              {filmRetrieve?.data.movie.description_full || 'There is no description for this film. We are working on it...'}
             </Style.DescriptionFull>
 
             <Style.Statistic>

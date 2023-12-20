@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-export const Films = styled.section`
+export const Films = styled.div`
     display: flex; 
-    width: 100%;
     height: 100%;
-    flex: 0 0 auto;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
     background-color: ${props => props.theme.bachgroundColor};
     transition: 0.1s;
 `;
@@ -13,9 +12,11 @@ export const Films = styled.section`
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    width: 1000px;
     padding: 0px 20px;
-    margin: 0px 0px;
+    margin-right: 50px;
+    align-items: center;
+    align-content: center;
+    aligh-self: center;
     box-sizing: border-box;
     justify-content: center;
 
@@ -28,17 +29,17 @@ export const Content = styled.div`
     }
     @media (max-width: 992px) and (min-width: 768px)  {
         padding: 0px 20px;   
-        margin: 0px 0px;
+
         width: 100%;
     }
     @media (max-width: 768px) and (min-width: 576px)  { 
         padding: 0px 20px;   
-        margin: 0px 0px;
+
         width: 100%;
     }
     @media (max-width: 576px)  {
         padding: 0px 20px;
-        margin: 0px 0px;
+
         width: 100%;
     }
 `;
