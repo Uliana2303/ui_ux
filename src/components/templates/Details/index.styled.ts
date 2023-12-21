@@ -14,7 +14,7 @@ export const Details = styled.section`
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    // width: 1000px;
     padding: 0px 20px;
     margin: 0px 0px;
     box-sizing: border-box;
@@ -27,30 +27,33 @@ export const Content = styled.div`
     }
     @media (max-width: 992px) and (min-width: 768px)  {
         padding: 0px 20px;   
-        margin: 0px 0px;
+        // margin: 0px 0px;
         width: 100%;
     }
     @media (max-width: 768px) and (min-width: 576px)  { 
         padding: 0px 20px;   
-        margin: 0px 0px;
+        // margin: 0px 0px;
         width: 100%;
     }
-    @media (max-width: 576px)  {
-        padding: 0px 20px;
-        margin: 0px 0px;
+    @media (max-width: 375px)  {
+        // padding: 0px 20px;
+        // margin: 0px 0px;
         width: 100%;
     }
 `;
-export const ContentTitle = styled.span`
+export const ContentTitle = styled.button`
+    font-family: ui-rounded;
     letter-spacing: 1px;
     font-weight: 500;
-    display: flex;
+    // display: flex;
     flex: 0 0 auto;
     width: 100%;
     margin: 50px 0px;
     align-items: center;
     box-sizing: border-box;
-    font-size: ${props => props.theme.textSizeTitle};
+    background-color: inherit;
+    border: 0px;
+    font-size: ${props => props.theme.textSizeTitle900};
     @media (max-width: 768px) and (min-width: 576px)  {
         font-size: ${props => props.theme.textSizeTitle700};
     }
@@ -98,19 +101,19 @@ export const Data = styled.div`
 
 export const Image = styled.div`
     display: flex;
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
     flex-direction: column;
 `;
 export const Img = styled.img`
-    aspect-ratio: 1/1/5;
+    // aspect-ratio: 1/1/5;
     display: flex;
     width: 100%;
     object-fit: cover;
     box-sizing: border-box;
     transition: 0.5s;
-    box-shadow: 0px 3px 5px ${props=>props.theme.shadowColor};;
-    margin: 0px 0px 20px 0px;
+    // box-shadow: 0px 3px 5px ${props=>props.theme.shadowColor};;
+    padding: 10px;
 `;
 
 export const Buttons = styled.div`
@@ -159,9 +162,10 @@ export const Description = styled.div`
 
 export const Title = styled.div`
     display: flex;
-    font-size: ${props=> props.theme.textSizeTitle};
+    font-size: ${props=> props.theme.textSizeTitle900};
     letter-spacing: 1px;
-    font-weight: 500;
+    font-family: ui-rounded;
+    font-weight: 600;
 `;
 
 export const Year = styled.div`
@@ -171,15 +175,15 @@ export const Year = styled.div`
     font-weight: 600;
     font-size: ${props=> props.theme.textSizeTextL};
     color: ${props=> props.theme.textColor};
-
-
+    font-family: ui-rounded;
 `;
 export const DescriptionFull = styled.div`
     display: flex;
     font-size: ${props=> props.theme.textSizeTextM};
     line-height: 25px;
     letter-spacing: 1px;
-
+    font-family: ui-rounded;
+    font-weight: 600;
 `;
 export const Genres = styled.div`
     display: grid;
@@ -195,15 +199,18 @@ export const Genres = styled.div`
 `;
 
 export const Statistic = styled.div`
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap:20px;
-    @media (max-width: 768px) and (min-width: 576px)  {
-        grid-template-columns: 1fr 1fr  1fr 1fr;
-    }
-    @media (max-width: 576px)  {
-        grid-template-columns: 1fr 1fr  ;
-    }
+    display: flex;
+    flex-direction: row;
+    max-width: 500px;
+    max-height: 140px;
+    // grid-template-columns: repeat(6, 1fr);
+    gap:20px;
+    // @media (max-width: 768px) and (min-width: 576px)  {
+    //     grid-template-columns: 1fr 1fr  1fr 1fr;
+    // }
+    // @media (max-width: 576px)  {
+    //     grid-template-columns: 1fr 1fr  ;
+    // }
 `;
 export const TorrentsTitle = styled.div`
     display: flex;
@@ -211,7 +218,8 @@ export const TorrentsTitle = styled.div`
     flex: 0 0 auto;
     font-weight: 600;
     font-size: ${props=> props.theme.textSizeTextL};
-    color: ${props=> props.theme.textColor};
+    color: ${props=> props.theme.accentColor2};
+    font-family: ui-rounded;
 `;
 
 export const Torrents = styled.div`
@@ -227,7 +235,7 @@ export const YourNameLabel = styled.div`
     flex: 0 0 auto;
     font-weight: 600;
     font-size: ${props=> props.theme.textSizeTextL};
-    color: ${props=> props.theme.accentColor1};
+    color: ${props=> props.theme.accentColor2};
 `;
 
 export const CommentTextLabel = styled.div`
@@ -237,7 +245,7 @@ export const CommentTextLabel = styled.div`
     flex: 0 0 auto;
     font-weight: 600;
     font-size: ${props=> props.theme.textSizeTextL};
-    color: ${props=> props.theme.accentColor1};
+    color: ${props=> props.theme.accentColor2};
 `;
 
 export const CommentsTitle = styled.div`
@@ -254,6 +262,7 @@ export const CommentItem = styled.div`
     display: flex;
     grid-template-columns: 1fr;
     grid-gap: 10px;
+    width: 350px;
     font-size: ${props=> props.theme.textSizeTextL};
     color: ${props=> props.theme.accentColor1};
 `;

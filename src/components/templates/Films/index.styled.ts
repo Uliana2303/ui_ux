@@ -3,8 +3,9 @@ import styled from 'styled-components';
 export const Films = styled.div`
     display: flex; 
     height: 100%;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    gap: 20px;
     background-color: ${props => props.theme.bachgroundColor};
     transition: 0.1s;
 `;
@@ -12,8 +13,8 @@ export const Films = styled.div`
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 0px 20px;
-    margin-right: 50px;
+    // padding: 0px 20px;
+    // margin-right: 50px;
     align-items: center;
     align-content: center;
     aligh-self: center;
@@ -28,18 +29,14 @@ export const Content = styled.div`
         width: 100%;
     }
     @media (max-width: 992px) and (min-width: 768px)  {
-        padding: 0px 20px;   
 
         width: 100%;
     }
     @media (max-width: 768px) and (min-width: 576px)  { 
-        padding: 0px 20px;   
 
         width: 100%;
     }
     @media (max-width: 576px)  {
-        padding: 0px 20px;
-
         width: 100%;
     }
 `;
@@ -50,7 +47,7 @@ export const Title = styled.span`
     font-weight: 600;
     display: flex;
     flex: 0 0 auto;
-    width: 100%;
+    // width: 100%;
     margin: 50px 0px;
     align-items: center;
     box-sizing: border-box;
@@ -68,25 +65,8 @@ export const List = styled.div`
     width: 100%;
     align-items: center;
     align-self: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
     border-top: 1px solid ${props => props.theme.accentColor1};
     border-bottom: 1px solid ${props => props.theme.accentColor1};
     padding: 20px 0px;
     box-sizing: border-box; 
-    @media (min-width: 1200px){
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-    @media (max-width: 1200px) and (min-width: 992px)  {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-    @media (max-width: 992px) and (min-width: 768px)  {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    @media (max-width: 768px) and (min-width: 576px)  {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    @media (max-width: 576px)  {
-        grid-template-columns: 1fr 1fr ;
-    }
 `;

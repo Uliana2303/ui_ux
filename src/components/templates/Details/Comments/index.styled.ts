@@ -35,6 +35,7 @@ export const CommentContent = styled.div`
 export const UserName = styled.div`
   display: flex;
   height: 30px;
+  outline: none;
   color: black;
   font-family: 'Comic Sans MS';
   font-size: ${props => props.theme.textSizeTextM};

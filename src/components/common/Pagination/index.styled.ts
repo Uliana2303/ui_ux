@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Pagination = styled.div`
-  position: fixed;
+  // position: fixed;
   right: 0;
   top: 50%;
-  display: flex; 
+  // display: flex; 
   width: 50px;
   height: 5%;
   min-height: 30px;
@@ -16,9 +16,10 @@ export const Pagination = styled.div`
 
 export const Content = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  flex-direction: row;
+  // width: 100%;
   height: 100%;
+  margin-bottom: 10px;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -28,13 +29,14 @@ export const Content = styled.div`
 export const Item = styled.div`
   cursor: pointer;
   display: flex;
+  flex-shrink: 1;
   flex: 0 0 auto;
   justify-content: center;
   align-items: center;
   background-color: ${props => props.theme.iconColor};
   font-weight: 500; 
   font-size: ${props => props.theme.textSizeTextM};
-  height: 50px;
+  height: 30px;
   max-widht: 40px;
   border-radius: 5px;
   aspect-ratio: 1/1;
@@ -48,7 +50,7 @@ export const Item = styled.div`
     background-color:${props => props.theme.accentColor1};
    
   }
-  margin: 0px 10px 0px 0px;
+  // margin: 0px 10px 0px 0px;
 
 `;
 

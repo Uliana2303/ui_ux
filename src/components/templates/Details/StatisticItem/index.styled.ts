@@ -7,8 +7,8 @@ export const StatisticItem = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: ${props => props.theme.iconColor};
-    box-shadow: 0px 0px 5px ${props => props.theme.shadowColor};
+    background-color: inherit;
+    // box-shadow: 0px 0px 5px ${props => props.theme.shadowColor};
     border-radius: 10px;
 `;
 

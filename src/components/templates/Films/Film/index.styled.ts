@@ -127,8 +127,8 @@ export const Film = styled.div`
     display: flex;  
     flex-direction:column ;
     width: 100%;
-    min-width: 400px;
-    box-shadow: 0px 0px 5px ${props => props.theme.shadowColor};
+    min-width: 365px;
+    // box-shadow: 0px 0px 5px ${props => props.theme.shadowColor};
     overflow: visible;
     position: relative;
     transition: all 0.3s ease;
@@ -150,9 +150,11 @@ export const Film = styled.div`
 export const Content = styled.div`
     display: flex;
     flex-direction: row;
-    width: 100%;
+    // width: 100%;
     height: 150px;
     position: relative;
+    margin-left: 5px;
+    margin-right: 5px; 
     overflow: hidden;
     border-radius:10px;
     background-color: ${props => props.theme.iconColor};

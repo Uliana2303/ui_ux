@@ -6,14 +6,21 @@ import Film from "./Film/Film";
 import Loader from "@/components/common/Loader";
 import * as Style from "./index.styled";
 import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 const Films = () => {
   const router = useRouter();
   // Начинаем с первой страницы фильмов
-  const [page, setPage] = useState(router.query.currentPage);
+  const [page, setPage] = useState("1");
   // Кол-во фильмов на странице
-  // const pageSize = 5;
-  // const [pageSize, setPageSize] = useState(5);
+
+  useEffect(() => {
+    if (router.isReady) {
+      console.log(router.query);
+      setPage(router.query.current_page || "");
+    }
+  }, [router.isReady]);
+
   const [pageSize, setPageSize] = useState(10);
   const { filmList, isLoading } = useFilmList(String(page), String(pageSize));
   const [loading, setLoading] = useState(false);
@@ -53,7 +60,7 @@ const Films = () => {
             pageSize={pageSize}
             onPageChange={(page) => {
               setPage(page);
-              router.push(`/${page}`);
+              router.push(`/catalog/${page}`);
             }}
           />
     </Style.Films>

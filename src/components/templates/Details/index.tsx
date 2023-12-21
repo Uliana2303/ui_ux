@@ -12,6 +12,7 @@ import {useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
 import { useFilmList } from "@/lib/hooks/useFilmList";
 import Film from "@/components/templates/Films/Film/Film";
+import { MdFavoriteBorder, MdMovieFilter, MdTimelapse } from "react-icons/md";
 
 
 import { AiTwotoneLike } from "react-icons/ai";
@@ -99,28 +100,34 @@ const Details = () => {
     // Функция для добавления нового комментария
     function addComment(event: React.FormEvent<HTMLFormElement>) {
       event.preventDefault();
-      const newComment: CommentProps = {
-        id: comments.length + 1,
-        userName: "User " + userName,
-        commentText: "Wrote: " + commentText
-      };
-      setComments([...comments, newComment]);
-      setUserName('');
-      setCommentText('');
-
-      
+      if (userName.trim().length != 0 && commentText.trim().length != 0)  {
+        const newComment: CommentProps = {
+          id: comments.length + 1,
+          userName: "User: " + userName,
+          commentText: commentText
+        };
+        setComments([...comments, newComment]);
+        setUserName('');
+        setCommentText('');
+      }      
     }
 
     //Функция для удаления комментария
 
     // Обработчик изменения поля ввода имени пользователя
     function handleUserNameChange(event: React.ChangeEvent<HTMLInputElement>) {
-      setUserName(event.target.value);
+
+        setUserName(event.target.value);
+      
+
     }
 
     // Обработчик изменения поля ввода текста комментария
     function handleCommentTextChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
-      setCommentText(event.target.value);
+
+        setCommentText(event.target.value);
+      
+
     }
 
 
@@ -139,7 +146,7 @@ const Details = () => {
 
 
     return (
-      <div> 
+       <div className="comment_block"> 
         {/* Форма для добавления нового комментария */}
         <form onSubmit={addComment}>
           <Style.YourNameLabel>Your Name:</Style.YourNameLabel>
@@ -150,7 +157,9 @@ const Details = () => {
         </form>
 
         {/* Список комментариев */}
-        {commentItems}
+         <div> {commentItems.length == 0 ? <h1>No comments yet...</h1> : 
+        commentItems }
+      </div> 
       </div>
     );
   }
@@ -158,9 +167,7 @@ const Details = () => {
   return (
     <Style.Details>
       <Style.Content>
-        <Style.ContentTitle>
-          <Link href={"/"}>Films / {filmRetrieve?.data.movie.title}</Link>
-        </Style.ContentTitle>
+        <Style.ContentTitle onClick={() => router.back()}>{filmRetrieve?.data.movie.title}</Style.ContentTitle>
 
         <Style.Data>
           <Style.Image>
@@ -178,6 +185,8 @@ const Details = () => {
             {/* <Style.OtherMoviesText>You might also like</Style.OtherMoviesText>
         
             <Style.RelatedMovies>{relatedFilmsList}{noRelatedMoviesMessage}</Style.RelatedMovies> */}
+            <Style.TorrentsTitle>Downloads:</Style.TorrentsTitle>
+            <Style.Torrents>{torrentsList}</Style.Torrents>
           </Style.Image>
 
           <Style.Description>
@@ -197,32 +206,35 @@ const Details = () => {
 
             <Style.Statistic>
               <StatisticItem
-                icon={<VscStarFull />}
+                caption="Rating"
+                icon={<MdMovieFilter />}
                 text={filmRetrieve?.data.movie.rating}
               ></StatisticItem>
               <StatisticItem
-                icon={<AiTwotoneLike />}
+                caption="Likes"
+                icon={<MdFavoriteBorder/>}
                 text={filmRetrieve?.data.movie.like_count}
               ></StatisticItem>
               <StatisticItem
-                icon={<BiTimeFive />}
+                caption="Duration"
+                icon={<MdTimelapse/>}
                 text={filmRetrieve?.data.movie.runtime}
               ></StatisticItem>
-              <StatisticItem
+              {/* <StatisticItem
                 icon={<VscDesktopDownload />}
                 text={filmRetrieve?.data.movie.download_count}
-              ></StatisticItem>
+              ></StatisticItem> */}
             </Style.Statistic>
 
-            <Style.TorrentsTitle>Downloads:</Style.TorrentsTitle>
+            {/* <Style.TorrentsTitle>Downloads:</Style.TorrentsTitle>
 
-            <Style.Torrents>{torrentsList}</Style.Torrents>
+            <Style.Torrents>{torrentsList}</Style.Torrents> */}
 
             {/* <Style.OtherMoviesText>You might also like</Style.OtherMoviesText>
         
             <Style.RelatedMovies>{relatedFilmsList}{noRelatedMoviesMessage}</Style.RelatedMovies> */}
 
-            <Style.CommentsTitle>leave a review for the film~</Style.CommentsTitle>
+            <Style.CommentsTitle>~leave a review for the film~</Style.CommentsTitle>
             
             <Style.CommentItem>{commentsList()}</Style.CommentItem>
 
