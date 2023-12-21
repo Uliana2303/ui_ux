@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Details = styled.section`
     display: flex; 
-    width: 100%;
+    // width: 100%;
     height: 100%;
     flex: 0 0 auto;
     justify-content: center;
@@ -256,4 +256,36 @@ export const CommentItem = styled.div`
     grid-gap: 10px;
     font-size: ${props=> props.theme.textSizeTextL};
     color: ${props=> props.theme.accentColor1};
+`;
+
+export const RelatedMovies = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    align-self: center;
+    gap: 10px;
+    padding: 20px 0px;
+    box-sizing: border-box; 
+    }
+`;
+export const OtherMoviesText = styled.div`
+    margin-top: 30px;
+    font-family: ui-rounded;
+    display: flex;
+    width: 100%;
+    flex: 0 0 auto;
+    font-weight: 600;
+    font-size: ${props=> props.theme.textSizeTextL};
+    color: ${props=> props.theme.accentColor1};
+`;
+export const SorryText = styled.div`
+    display: flex;
+    font-size: ${props=> props.theme.textSizeTitle};
+    letter-spacing: 1px;
+    font-weight: 600;
+    width: 100%;
+    justify-content: center;
+    margin: 20px 0px 00px 0px;
+    text-align: center;
 `;

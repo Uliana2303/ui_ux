@@ -22,18 +22,6 @@ const Films = () => {
   const windowHeight = size[1];
   
 
-  // Меняю кол-во фильмов на экране по мере его масштабирования в большую или меньшую стороны
-  // useEffect(() => {
-  //   if (windowWidth == 1920) {
-  //     setPageSize(15);
-  //   } 
-  //   else if (windowWidth > 1920){
-  //     setPageSize(30);
-  //   }
-  //   else if (windowWidth < 1920){
-  //     setPageSize(5);
-  //   }
-  // }, [windowWidth, windowHeight]);
 
   let prevVal = page;
 

@@ -10,7 +10,8 @@ import CommentItem from "./Comments/Comments";
 import { CommentProps } from "./Comments/Comments";
 import {useState, useEffect} from 'react';
 import Button from 'react-bootstrap/Button';
-
+import { useFilmList } from "@/lib/hooks/useFilmList";
+import Film from "@/components/templates/Films/Film/Film";
 
 
 import { AiTwotoneLike } from "react-icons/ai";
@@ -45,6 +46,33 @@ const Details = () => {
   const { filmRetrieve, isLoading } = useFilmRetrieve(
     (router.query.id as string) || ""
   );
+
+  const [page, setPage] = useState();
+  const pageSize = 45;
+  const { filmList } = useFilmList(String(page), String(pageSize));
+  
+  const currentMovieGenres = filmRetrieve?.data.movie.genres || [];
+  
+  const relatedMoviesByGenre = filmList?.data.movies.filter((film) => {    
+    const movieGenres = film.genres || [];    
+    const isSameMovie = film.id === filmRetrieve?.data.movie.id;
+
+    return !isSameMovie && movieGenres.some((genre) =>
+      currentMovieGenres.map((g) => g.toLowerCase()).includes(genre.toLowerCase())
+    );
+  });
+  
+  const relatedFilmsList = relatedMoviesByGenre?.slice(0, 5).map((film) => (
+    <Film key={film.id} {...film}></Film>
+  ));
+  
+  const noRelatedMoviesMessage = relatedFilmsList && relatedFilmsList.length === 0 ? (
+    <Style.SorryText>
+      Sorry, no similar movies found.
+    </Style.SorryText>
+  ) : null;
+  ///////////////////////////////////////
+
 
   if (isLoading) {
     return <Loader />;
@@ -147,6 +175,9 @@ const Details = () => {
                 Watch Now
               </Style.WatchButton>
             </Style.Buttons>
+            {/* <Style.OtherMoviesText>You might also like</Style.OtherMoviesText>
+        
+            <Style.RelatedMovies>{relatedFilmsList}{noRelatedMoviesMessage}</Style.RelatedMovies> */}
           </Style.Image>
 
           <Style.Description>
@@ -187,12 +218,19 @@ const Details = () => {
 
             <Style.Torrents>{torrentsList}</Style.Torrents>
 
+            {/* <Style.OtherMoviesText>You might also like</Style.OtherMoviesText>
+        
+            <Style.RelatedMovies>{relatedFilmsList}{noRelatedMoviesMessage}</Style.RelatedMovies> */}
+
             <Style.CommentsTitle>leave a review for the film~</Style.CommentsTitle>
             
             <Style.CommentItem>{commentsList()}</Style.CommentItem>
 
           </Style.Description>
         </Style.Data>
+        <Style.OtherMoviesText>You might also like</Style.OtherMoviesText>
+        
+        <Style.RelatedMovies>{relatedFilmsList}{noRelatedMoviesMessage}</Style.RelatedMovies>
       </Style.Content>
     </Style.Details>
   );
