@@ -197,13 +197,7 @@ const Details = () => {
                 " " +
                 filmRetrieve?.data.movie.language}
             </Style.Year>
-
-            <Style.Genres>{genresList}</Style.Genres>
-
-            <Style.DescriptionFull>
-              {filmRetrieve?.data.movie.description_full || 'There is no description for this film. We are working on it...'}
-            </Style.DescriptionFull>
-
+            
             <Style.Statistic>
               <StatisticItem
                 caption="Rating"
@@ -225,6 +219,13 @@ const Details = () => {
                 text={filmRetrieve?.data.movie.download_count}
               ></StatisticItem> */}
             </Style.Statistic>
+            <Style.Genres>{genresList}</Style.Genres>
+
+            <Style.DescriptionFull>
+              {filmRetrieve?.data.movie.description_full || 'There is no description for this film. We are working on it...'}
+            </Style.DescriptionFull>
+
+
 
             {/* <Style.TorrentsTitle>Downloads:</Style.TorrentsTitle>
 
